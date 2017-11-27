@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SIGENER</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+
+	<div id="geral">
+		<div id="lateral" class="divLateral">
+			<p:menubar>
+
+				<f:facet name="options">
+
+					<h:panelGrid columns="1"
+						style="margin-right:100; margin-top:-10px; position:absolute"
+						width="50px">
+						<p:graphicImage library="images" name="msn.png" width="50px"
+							style="margin-right:100; position:absolute" />
+					</h:panelGrid>
+					<h:outputText value="Minha Conta"
+						style="margin-right:100; margin-top:25px; position:absolute" />
+
+					<p:commandButton icon="ui-icon-print"
+						style="margin-left:100px;  margin-top:0px; margin-right:-40px;" />
+					<p:commandButton
+						style="margin-left:50px;  margin-top:0px; margin-right:-40px;"
+						type="button" icon="ui-icon-info" />
+					<p:inputText
+						style="margin-left:50px;  margin-top:0px; margin-right:10px;"
+						placeholder="Search " />
+					<p:commandButton style="position:top" type="button"
+						icon="ui-icon-search" />
+				</f:facet>
+
+				<p:menuitem>
+					<p:outputLabel>
+							Olá, usuário <br /> Seja Bem-Vindo
+							</p:outputLabel>
+				</p:menuitem>
+			</p:menubar>
+
+			<p:layout style="min-width:500px; min-height:500px; margin-top:10px;">
+				<p:layoutUnit position="west" resizable="false" size="100"
+					minSize="60" maxSize="500">
+					<h:form>
+						<p:submenu>
+							<p:column>
+								<p:graphicImage library="images" name="home.jpg" width="50px"
+									alt="" style="position:absolute; margin-left:15px" />
+								<h:outputText value="Início"
+									style="margin-top:50px; margin-left:25px; font-size:10px; position:absolute" />
+
+								<p:spacer height="14" />
+
+								<p:graphicImage library="images" name="conf.png" width="50px"
+									style="margin-top:70px; margin-left:0px;" />
+								<h:outputText value="Configuração"
+									style="margin-top:-20px; margin-left:5px; font-size:10px;" />
+
+								<p:spacer height="14" />
+
+
+								<p:graphicImage library="images" name="notepad.png" width="50px"
+									style="margin-top:20px; margin-left:15px" />
+								<h:outputText value="Metas"
+									style="margin-top:-20px; margin-left:25px; font-size:10px;" />
+
+
+								<p:spacer height="14" />
+
+
+								<p:graphicImage library="images" name="network.png" width="50px"
+									style="margin-top:10px; margin-left:10px" />
+								<h:outputText value="Eletrodomésticos"
+									style="margin-top:-20px; margin-left:0px; font-size:10px;" />
+
+								<p:spacer height="14" />
+
+
+								<p:graphicImage library="images" name="raio.png" width="50px"
+									style="margin-top:20px" />
+								<h:outputText value="Consumo"
+									style="margin-top:10px; margin-left:20px; font-size:10px;" />
+
+
+								<p:spacer height="14" />
+
+								<p:graphicImage library="images" name="relatorio.png"
+									width="50px" style="margin-top:10px; margin-left:20px" />
+									<h:outputText value="Relatórios"
+									style="margin-top:-20px; margin-left:20px; font-size:10px;" />
+
+							</p:column>
+						</p:submenu>
+					</h:form>
+				</p:layoutUnit>
+
+				<p:layoutUnit position="center" id="center" class="divCenter">
+					<ui:insert name="conteudo" />
+				</p:layoutUnit>
+			</p:layout>
+		</div>
+
+
+	</div>
+</h:body>
+</html>

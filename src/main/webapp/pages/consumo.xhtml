@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/modelo.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form id="formListagem">
+			<p:panel header="Consumos - Listagem">
+				<p:dataTable id="painel" emptyMessage="Nenhum registro encontrado"
+					paginator="true" value="#{consumoBean.consumos}" var="consumo">
+					<f:facet name="footer">
+						<p:commandButton icon="ui-icon-plus"
+							oncomplete="PF('dlgConsumos').show();"
+							actionListener="#{consumoBean.novo()}"
+							update=":formCadastro:painel">
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						</p:commandButton>
+						
+						<p:commandButton icon="ui-icon-print" actionListener="#{consumoBean.imprimir()}" />
+					</f:facet>
+					<p:column headerText="Data Início">
+						<h:outputText value="#{consumo.dataInicio}">
+							<f:convertDateTime locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Término">
+						<h:outputText value="#{consumo.dataTermino}">
+							<f:convertDateTime locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Valor Consumido">
+						<h:outputText value="#{consumo.valorConsumido}" />
+					</p:column>
+
+					<p:column headerText="Hora Inicio">
+						<h:outputText value="#{consumo.horaInicio}">
+							<f:convertDateTime pattern="HH:mm:ss" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Hora Término">
+						<h:outputText value="#{consumo.horaTermino}">
+							<f:convertDateTime pattern="HH:mm:ss" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Opções">
+						<p:commandButton icon="ui-icon-trash"
+							actionListener="#{consumoBean.excluir}"
+							update=":mensagem :formListagem:painel">
+							<p:confirm header="Confirmação"
+								message="Deseja excluir o consumo?" icon="ui-icon-alert" />
+							<f:attribute name="consumoSelecionado" value="#{consumo}" />
+						</p:commandButton>
+						<p:commandButton icon="ui-icon-pencil"
+							actionListener="#{consumoBean.editar}"
+							oncomplete="PF('dlgConsumos').show()"
+							update=":formCadastro:painel">
+							<f:attribute name="consumoSelecionado" value="#{consumo}" />
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</h:form>
+
+		<p:dialog header="Consumos - Cadastro" widgetVar="dlgConsumos"
+			draggable="true" resizable="false" modal="false" closable="false">
+			<h:form id="formCadastro" enctype="multipart/form-data">
+				<h:panelGrid columns="2" id="painel">
+					<p:outputLabel value="Data Início:" for="cDataInicio" />
+					<p:calendar maxlength="10"
+						value="#{consumoBean.consumo.dataInicio}" required="true"
+						requiredMessage="O campo Data Início é obrigatório"
+						id="cDataInicio" showOn="button" />
+
+					<p:outputLabel value="Data Término:" for="cDataTermino" />
+					<p:calendar maxlength="10"
+						value="#{consumoBean.consumo.dataTermino}" required="true"
+						requiredMessage="O campo Data Término é obrigatório"
+						id="cDataTermino" showOn="button" />
+						
+
+					<p:outputLabel value="Valor Consumido:" for="cValorConsumido" />
+					<p:inputText size="15" maxlength="30"
+						value="#{consumoBean.consumo.valorConsumido}" required="false"
+						id="cValorConsumido" />
+
+					<p:outputLabel value="Hora Início:" for="cHoraInicio" />
+					<p:calendar id="cHoraInicio"
+						value="#{consumoBean.consumo.horaInicio}" pattern="HH:mm:ss"
+						timeOnly="true" showOn="button" />
+
+					<p:outputLabel value="Hora Término:" for="cHoraTermino" />
+					<p:calendar id="cHoraTermino"
+						value="#{consumoBean.consumo.horaTermino}" pattern="HH:mm:ss"
+						timeOnly="true" showOn="button" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar"
+						actionListener="#{consumoBean.salvar()}"
+						update=":mensagem :formCadastro:painel :formListagem:painel" />
+					<p:commandButton value="Fechar"
+						oncomplete="PF('dlgConsumos').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

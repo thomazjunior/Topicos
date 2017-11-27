@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consumo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aae71126-0db2-4d7a-95a0-61f396437d5b">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Z2VyZW5jaWFkb3IuY29uc3VtbyBBUyAsMTE0LDQyLGMyM2M2ZjRhLTk0ZTYtNDg5YS04Y2RjLWY4
+NzgwNWM3YWY4MDs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Gerenciador Data Adapter "/>
+	<queryString language="SQL">
+		<![CDATA[SELECT gerenciador.consumo.`dataInicio`,
+	gerenciador.consumo.`dataTermino`,
+	gerenciador.consumo.`horaInicio`,
+	gerenciador.consumo.`horaTermino`,
+	gerenciador.consumo.`valorConsumido`
+FROM gerenciador.consumo]]>
+	</queryString>
+	<field name="dataInicio" class="java.sql.Date"/>
+	<field name="dataTermino" class="java.sql.Date"/>
+	<field name="horaInicio" class="java.sql.Timestamp"/>
+	<field name="horaTermino" class="java.sql.Timestamp"/>
+	<field name="valorConsumido" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="-20" y="0" width="595" height="86" uuid="0186d13c-23f9-4301-b800-cf22e171d8f8"/>
+				<imageExpression><![CDATA["src/main/webapp/resources/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="0" width="595" height="49" uuid="f4634017-9ee4-4b8d-a82c-d20c05a92cd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Consumo dos Produtos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="30" uuid="8c31803c-b75b-4008-95a4-07357c054888"/>
+				<text><![CDATA[horaTermino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="ba4a0b11-eed9-459f-ba93-887a17506d48"/>
+				<text><![CDATA[dataInicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="db730a3c-56f4-455c-9d83-ca6858359eff"/>
+				<text><![CDATA[dataTermino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="100" height="30" uuid="57410c38-3ddb-40d8-b039-f344ee64e448"/>
+				<text><![CDATA[horaInicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="100" height="30" uuid="21040aa1-cae0-4c51-a554-a873e28986a9"/>
+				<text><![CDATA[valorConsumido]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="350" y="0" width="100" height="30" uuid="e46913a2-e87c-405b-9c09-e3b2177febcf"/>
+				<textFieldExpression><![CDATA[$F{horaTermino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="07389797-c722-4f68-9739-e1768f37850a"/>
+				<textFieldExpression><![CDATA[$F{dataInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="c1731c16-316e-4029-99dc-b67da04cb9df"/>
+				<textFieldExpression><![CDATA[$F{dataTermino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="100" height="30" uuid="a14786ce-0f42-4e1f-adaf-2029d24172a0"/>
+				<textFieldExpression><![CDATA[$F{horaInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="30" uuid="3ddb1858-4524-4f21-84f7-7b26d7adb726"/>
+				<textFieldExpression><![CDATA[$F{valorConsumido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

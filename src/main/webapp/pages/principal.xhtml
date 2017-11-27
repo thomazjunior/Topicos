@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/modelo.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel id="containment" header="Suas Metas"
+			style="width:200px;height:300px;border:2px solid black;">
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:100px; border:2px solid #E6E8FA; font-size:11px; ">
+			Reduzir 20% o consumo com o chuveiro
+			<br />
+			Iniciou em 20/11/16 às 18:22
+			<br />
+			Termina em 20/12/16 às 20h
+			<br />
+			Consumo médio 45 KW/mês
+			<br />
+				<p:progressBar value="50" labelTemplate="{value}%"
+					displayOnly="true" style="margin-top:20px" />
+			</p:outputPanel>
+			<br />
+
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:130px; border:2px solid #E6E8FA; font-size:11px">
+			Reduzir 20% o consumo com o chuveiro
+			<br />
+			Iniciou em 20/11/16 às 18:22
+			<br />
+			Termina em 20/12/16 às 20h
+			<br />
+			Consumo médio 45 KW/mês
+			<br />
+				<p:progressBar value="50" labelTemplate="{value}%"
+					displayOnly="true" style="margin-top:50px" />
+			</p:outputPanel>
+
+		</p:panel>
+
+		<p:panel id="containment2" header="Seus Eletrodomésticos"
+			style="width:200px;height:300px;border:2px solid black; margin-left:300px; margin-top:-308px; position:absolute">
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:60px; border:2px solid #E6E8FA; font-size:11px">
+			Chuveiro
+			<br />
+			Consumo médio 45 KW/mês
+			<br />
+				<p:progressBar value="50" labelTemplate="{value}%"
+					displayOnly="true" style="margin-top:20px" />
+			</p:outputPanel>
+			<br />
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:60px; border:2px solid #E6E8FA; font-size:11px">
+			Geladeira
+			<br />
+			Consumo médio 45 KW/mês
+			<br />
+				<p:progressBar value="50" labelTemplate="{value}%"
+					displayOnly="true" style="margin-top:20px" />
+			</p:outputPanel>
+			<br />
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:60px; border:2px solid #E6E8FA; font-size:11px">
+			Lampâdas da sala
+			<br />
+			Consumo médio 45 KW/mês
+			<br />
+				<p:progressBar value="50" labelTemplate="{value}%"
+					displayOnly="true" style="margin-top:20px" />
+			</p:outputPanel>
+		</p:panel>
+
+		<p:panel id="containment3" header="Seus Consumos"
+			style="width:200px;height:300px;border:2px solid black; margin-left:600px; margin-top:-308px">
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:100px; border:2px solid #E6E8FA; font-size:11px">
+			Mês anterior  <br />
+				<br />
+			250 KW/mês<br />
+			Valor total: R$330,00<br />
+			Valor KW/hR$0,75<br />
+			</p:outputPanel>
+			<br />
+			<br />
+			<p:outputPanel
+				style="background-color: #E6E8FA; height:100px; border:2px solid #E6E8FA; font-size:11px">
+			Mês anterior  <br />
+				<br />
+			250 KW/mês<br />
+			Valor total: R$330,00<br />
+			Valor KW/hR$0,75<br />
+			</p:outputPanel>
+		</p:panel>
+
+
+	</ui:define>
+</ui:composition>

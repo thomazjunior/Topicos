@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/modelo.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form id="formListagem">
+			<p:panel header="Eletromésticos - Listagem">
+				<p:dataTable id="painel" emptyMessage="Nenhum registro encontrado"
+					paginator="true" value="#{eletrodomesticoBean.eletros}"
+					var="eletro">
+					<f:facet name="footer">
+						<p:commandButton value="Cadastrar Eletrodoméstico"
+							oncomplete="PF('dlgEletros').show();"
+							actionListener="#{eletrodomesticoBean.novo()}"
+							update=":formCadastro:painel">
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						</p:commandButton>
+					</f:facet>
+					<p:column headerText="Fabricante">
+						<h:outputText value="#{eletro.fabricante}" />
+					</p:column>
+
+					<p:column headerText="Modelo">
+						<h:outputText value="#{eletro.modelo}" />
+					</p:column>
+
+					<p:column headerText="Consumo">
+						<h:outputText value="#{eletro.consumoMedio}" />
+					</p:column>
+
+					<p:column headerText="Opções">
+						<p:commandButton icon="ui-icon-trash"
+							actionListener="#{eletrodomesticoBean.excluir}"
+							update=":mensagem :formListagem:painel">
+							<p:confirm header="Confirmação"
+								message="Deseja excluir o eletrodoméstico?" icon="ui-icon-alert" />
+							<f:attribute name="eletrodomesticoSelecionado" value="#{eletro}" />
+						</p:commandButton>
+						<p:commandButton icon="ui-icon-pencil"
+							actionListener="#{eletrodomesticoBean.editar}"
+							oncomplete="PF('dlgEletros').show()"
+							update=":formCadastro:painel">
+							<f:attribute name="eletrodomesticoSelecionado" value="#{eletro}" />
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</h:form>
+
+		<p:dialog header="Eletrodomésticos - Cadastro" widgetVar="dlgEletros"
+			draggable="true" resizable="false" modal="false" closable="false">
+			<h:form id="formCadastro" enctype="multipart/form-data">
+				<h:panelGrid columns="2" id="painel">
+					<p:outputLabel value="Fabricante:" for="cFabricante" />
+					<p:inputText size="15" maxlength="30"
+						value="#{eletrodomesticoBean.eletro.fabricante}" required="true"
+						requiredMessage="O campo Fabricante é obrigatório"
+						id="cFabricante" />
+
+					<p:outputLabel value="Modelo:" for="cModelo" />
+					<p:inputText size="15" maxlength="30"
+						value="#{eletrodomesticoBean.eletro.modelo}" required="true"
+						requiredMessage="O campo Modelo é obrigatório" id="cModelo" />
+
+					<p:outputLabel value="Consumo:" for="cConsumo" />
+					<p:inputText size="15" maxlength="30"
+						value="#{eletrodomesticoBean.eletro.consumoMedio}" required="true"
+						requiredMessage="O campo Consumo é obrigatório" id="cConsumo" />
+
+					<p:outputLabel for="upload" value="Upload: " />
+					<p:fileUpload id="upload" mode="advanced"
+						fileUploadListener="#{eletrodomesticoBean.upload}"
+						update=":mensagem :formCadastro:foto" auto="true" />
+
+					<p:outputLabel for="foto" value="Foto:" />
+					<p:graphicImage id="foto" value="#{imagemBean.foto}">
+						<f:param name="caminho"
+							value="#{eletrodomesticoBean.eletro.caminho}" />
+					</p:graphicImage>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar"
+						actionListener="#{eletrodomesticoBean.salvar()}"
+						update=":mensagem :formCadastro:painel :formListagem:painel" />
+					<p:commandButton value="Fechar"
+						oncomplete="PF('dlgEletros').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

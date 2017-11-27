@@ -1,0 +1,31 @@
+@CHARSET "ISO-8859-1";
+
+.imagemCentralizada {
+	position:absolute;
+	top:1000;
+	left:0;
+}
+
+.divTopo {
+	padding-bottom: 5px;
+}
+
+.divCenter {
+	
+	padding-left: 0px;
+}
+
+
+.divLateral {
+	padding-right: 0px;
+}
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 90%;
+}
+
+.imagemNovo {
+	width: auto;
+	height: auto;
+	background-image: url(images/add.png) !important;
+}
